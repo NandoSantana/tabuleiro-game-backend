@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+Route::post('/registrar-ranking', '\App\Http\Controllers\RegisteRankingController@store');
+Route::get('/top-five-ranking', '\App\Http\Controllers\RegisteRankingController@show');
+
