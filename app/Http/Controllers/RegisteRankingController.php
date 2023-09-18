@@ -50,28 +50,11 @@ class RegisteRankingController extends Controller
     public function show(User $user)
     {
         //
-        $ranking = VelhaRanking::orderBy('points', 'DESC')->get()->groupBy('playerName');
-        $topRanking = VelhaRanking::orderBy('points', 'DESC')
 
-            ->get(['points','playerName']);
-
-
-        $rankingGrouped = $topRanking->groupBy('playerName')
-            ->map(function ($group) {
-                return $group->take(5);
-            });
         $ranking = VelhaRanking::orderBy('points', 'DESC')
-            ->paginate(5)
+            ->get()
             ->groupBy('playerName')
-            ->map(function ($group) {
-                return $group->take(1);
-            })
-        ;
-        // $data = [];
-        // // return $rankingGrouped->count();
-        // for ($i = 0; $rankingGrouped->count() < 5; $i++ ){
-        //     $data[] = $rankingGrouped;
-        // }
+            ->take(5);
 
         return response()->json($ranking);
     }
