@@ -58,6 +58,16 @@ class RegisteRankingController extends Controller
 
         return response()->json($ranking);
     }
+    public function showTotal(User $user)
+    {
+        //
+
+        $ranking = VelhaRanking::orderBy('points', 'DESC')
+            ->get()
+            ->groupBy('playerName');
+
+        return response()->json($ranking);
+    }
 
     /**
      * Update the specified resource in storage.

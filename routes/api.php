@@ -21,4 +21,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post('/registrar-ranking', '\App\Http\Controllers\RegisteRankingController@store');
 Route::get('/top-five-ranking', '\App\Http\Controllers\RegisteRankingController@show');
-
+Route::get('/top-total-ranking', '\App\Http\Controllers\RegisteRankingController@showTotal');
